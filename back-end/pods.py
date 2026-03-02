@@ -1,7 +1,7 @@
 #pod functions
 import random as rand
 
-
+#Using the number of people creates a number of pods to contain those people
 def create_pods(people):
     length = len(people)
     total_pods = 0
@@ -31,7 +31,8 @@ def create_pods(people):
         return 0, 0, total_pods
     else:
         return 0, 0, 0
- 
+
+#Runs threw every player and assigns them to a random pod 
 def assign_pods(three_pods, four_pods, total_pods, people):
     pods = []
     i = 0
@@ -67,10 +68,19 @@ def assign_pods(three_pods, four_pods, total_pods, people):
                 continue
     return pods
 
+#unfinished duplicate checking currently only checks if any pod member one repeats games.
 def check_dups(pods, all_pods):
-    
-    print(all_pods)
+    rounds = len(all_pods)
+    i = 0
+    while (i < rounds):
+        if (pods[0] == all_pods[i][0]):
+            j = 1
+            while(j < 4):
+                if pods[j] == all_pods[i][j]:
+                    return True
+    return False
 
+#changes up the pods so players play new groups
 def shuffle_pods(pods, total_pods, all_pods):
     all_pods.append([row[:] for row in pods])
     temp_pods = [row[:] for row in pods]
@@ -88,6 +98,7 @@ def shuffle_pods(pods, total_pods, all_pods):
     return pods, all_pods
 
 
+#main function to run all the individual functions
 def main():
     with open("names.txt") as f:
         people = [line.strip() for line in f.readlines()]
