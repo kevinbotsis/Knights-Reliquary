@@ -7,6 +7,7 @@ class User:
     username: str
     password: str
     creation_date: tuple[int, int, int]
+    host: bool
 
     #sets the users creation date to the current month/day/year
     def setCreationDate(self, month, day, year):
@@ -23,6 +24,9 @@ class User:
 
     def setPassword(self, currentPass):
         self.password = currentPass
+        
+    def setHost(self, hosting):
+        self.host = hosting
 
     def validateName(self):
         if (len(self.displayName) < 1 or len(self.displayName) > 100):
@@ -35,6 +39,9 @@ class User:
             return False
         else:
             return True
+        
+    def checkHost(self):
+        return self.host
     
 
 def main():
