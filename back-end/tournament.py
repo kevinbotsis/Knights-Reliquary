@@ -7,7 +7,12 @@ class tournament:
     hostID: int
     hostName: str
     creation_date: tuple[int, int, int]
+    players: []
 
+    def addPlayers(newPlayers):
+        for new in newPlayers:
+            players.add[new]
+            
     def setTournName(self, name):
         self.tournName = name
 
